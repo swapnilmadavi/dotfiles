@@ -12,10 +12,22 @@ vim.opt.termguicolors = true
 vim.pack.add({
   { src = 'https://github.com/nvim-tree/nvim-web-devicons' },
   { src = 'https://github.com/nvim-tree/nvim-tree.lua' },
+  { src = 'https://github.com/nvim-treesitter/nvim-treesitter' },
 })
 
 -- Setup nvim-tree
 require("nvim-tree").setup()
+
+-- Setup nvim-treesitter
+require("nvim-treesitter").setup()
+
+-- Enable treesitter highlighting for our languages
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "typescript", "javascript", "tsx", "html", "css", "json" },
+  callback = function()
+    vim.treesitter.start()
+  end,
+})
 
 -- Keymaps
 vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", { desc = "Toggle file explorer" })
