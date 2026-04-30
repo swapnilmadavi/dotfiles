@@ -13,6 +13,7 @@ vim.pack.add({
   { src = 'https://github.com/nvim-tree/nvim-web-devicons' },
   { src = 'https://github.com/nvim-tree/nvim-tree.lua' },
   { src = 'https://github.com/nvim-treesitter/nvim-treesitter' },
+  { src = 'https://github.com/catppuccin/nvim', name = 'catppuccin' },
 })
 
 -- Setup nvim-tree
@@ -28,6 +29,9 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.treesitter.start()
   end,
 })
+
+-- Set colorscheme
+vim.cmd.colorscheme("catppuccin-mocha")
 
 -- Keymaps
 vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", { desc = "Toggle file explorer" })
